@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title">Update Notifications</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="form-group col-lg-12">
+            <div class="form-group">
+                <label>Notifications Email:</label>
+                <input
+                        type="email"
+                        class="form-control"
+                        ng-model="notificationsPayload.email"
+                        name="email"
+                        placeholder="Email is required"
+                        required="required">
+            </div>
+            <div class="form-group">
+                <div class="well">
+                    <button
+                            class="btn btn-info"
+                            ng-click="createNotifications()">Create
+                    </button>
+                    <button class="btn btn-success" ng-click="cancel()" ng-disabled="editVm.showClose !== 'true'">Close</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

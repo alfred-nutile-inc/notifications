@@ -1,0 +1,63 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content mailbox-content">
+                    <div class="file-manager">
+
+                        <div class="space-25"></div>
+                        <h5>Folders</h5>
+                        <ul class="folder-list m-b-md" style="padding: 0">
+                            <li><a ui-sref="inbox"> <i class="fa fa-inbox "></i> Un-Read <span class="label label-warning pull-right">{{ vm.response.notifications.length }}</span> </a></li>
+                        </ul>
+                        <h5>Message Type</h5>
+                        <ul class="category-list" style="padding: 0">
+                            <li><a href=""> <i class="fa fa-circle text-info"></i> User</a></li>
+                            <li><a href=""> <i class="fa fa-circle text-warning"></i> Project</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+                <form method="get" action="index.html" class="pull-right mail-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" name="search" ng-model="search" placeholder="Search Messages">
+                    </div>
+                </form>
+                <h2>
+                    Notifications ({{ vm.response.notifications.length }})
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <button class="btn btn-white btn-sm"
+                            ng-click="vm.NotificationsHelpers.markRead(vm.mark_read, vm)"
+                            ng-disabled="!vm.mark_read.length">mark read</button>
+
+                </div>
+            </div>
+            <div class="mail-box">
+
+                <table class="table table-hover table-mail">
+                    <tbody>
+
+                    <tr class="unread" ng-repeat="message in vm.response.notifications | filter:search" ng-show="message.read == '0'">
+                        <td class="check-mail">
+                            <input icheck type="checkbox" checklist-model="vm.mark_read" checklist-value="message.id">
+                        </td>
+                        <td class="mail-contact">{{message.from.name}}<span class="label label-warning pull-right">Project</span></td>
+                        <td class="mail-subject">{{ message.notification_message.message }}</td>
+                        <td class=""></td>
+                        <td class="text-right mail-date">{{ message.created_at | date:'medium' }} </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
