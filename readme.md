@@ -29,5 +29,6 @@ You can also include the routes file into your routes file for api access to the
 
 The test files shows some example usage
 
+[/tests/CoreApp/Tests/NotificationTest.php](/tests/CoreApp/Tests/NotificationTest.php)
+[/tests/CoreApp/Tests/NotificationListenerTest.php](/tests/CoreApp/Tests/NotificationListenerTest.php)
 
-More docs soon
