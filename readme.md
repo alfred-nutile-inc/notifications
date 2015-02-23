@@ -4,6 +4,10 @@ video [here](https://www.youtube.com/watch?v=eb6BvQt0Qsc)
 
 ## Install
 
+~~~
+composer require alfred-nutile-inc/notifications:dev-master
+~~~
+
 Register the provider and facade
 
 ~~~
