@@ -5,7 +5,7 @@ Feature: Notification API
   So I can see unread messages and marked them read
 
   Background: Login
-    And I do basic auth as "cloudappsteam+mock@gmail.com" with password "APPROVE_MOCK_PWD"
+    And I do basic auth as "cloudappsteam+mock1@gmail.com" with password "APPROVE_MOCK_PWD"
 
   Scenario: Get All Notifications
     When I request "GET /api/v1/notifications"
@@ -18,7 +18,6 @@ Feature: Notification API
     """
     And the "read" property equals "0"
 
-  @thisone
   Scenario: And I mark as read
     Given create notification with read "1" and id "mock-notification-put"
     Given I have the payload:
