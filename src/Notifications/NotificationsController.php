@@ -9,7 +9,7 @@
 namespace AlfredNutileInc\CoreApp\Notifications;
 
 
-use Approve\Http\Controllers\BaseController;
+use AlfredNutileInc\CoreApp\BaseController;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use AlfredNutileInc\CoreApp\Notifications\NotificationInterface;
