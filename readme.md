@@ -60,3 +60,45 @@ The test files shows some example usage
 [/tests/CoreApp/Tests/NotificationTest.php](/tests/CoreApp/Tests/NotificationTest.php)
 [/tests/CoreApp/Tests/NotificationListenerTest.php](/tests/CoreApp/Tests/NotificationListenerTest.php)
 
+
+# Plug it into Angular
+
+
+Base blade file
+
+~~~
+<?php
+use AlfredNutileInc\CoreApp\Notifications\NotificationFacade as Notify;
+
+/**
+ * @Middleware("auth")
+ */
+class AngularController extends BaseController {
+
+
+    /**
+     * @Get("approve", as="approve.dash")
+     */
+	public function index()
+	{
+        $chat_on = getenv('CHAT_ON');
+
+        $message = Notify::setRead(0)->setLimit(10)->getAll();
+        JavaScript::put(
+            [
+                'pusher_public_key' => getenv('PUSHER_PUBLIC'),
+                'sauce_key' => getenv('SAUCE_TOKEN'),
+                'sauce_user' => getenv('SAUCE_USER'),
+                'token' => csrf_token(),
+                'profile' => User::profile(),
+                'environment' => getenv('APP_ENV'),
+                'messages'   => $message
+            ]
+        );
+		return View::make('layouts/main', compact('chat_on'));
+	}
+
+}
+~~~
+
+
