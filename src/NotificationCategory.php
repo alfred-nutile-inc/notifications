@@ -6,9 +6,9 @@
  * Time: 7:57 AM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
-use AlfredNutileInc\CoreApp\BaseModel;
+use AlfredNutileInc\BaseModel;
 
 class NotificationCategory extends BaseModel {
 

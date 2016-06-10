@@ -6,7 +6,7 @@
  * Time: 12:53 PM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
 
 interface NotificationModelInterface {

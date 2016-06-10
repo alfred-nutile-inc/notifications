@@ -6,17 +6,17 @@
  * Time: 9:29 AM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class NotificationFacade
- * @package AlfredNutileInc\CoreApp\Notifications
+ * @package AlfredNutileInc\Notifications
  * @see NotificationService
  */
 
 class NotificationFacade extends Facade {
-    protected static function getFacadeAccessor() { return 'AlfredNutileInc\CoreApp\Notifications\NotificationInterface'; }
+    protected static function getFacadeAccessor() { return 'AlfredNutileInc\Notifications\NotificationInterface'; }
 
 }

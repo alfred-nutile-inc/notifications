@@ -6,9 +6,9 @@
  * Time: 7:57 AM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
-use AlfredNutileInc\CoreApp\BaseModel;
+use AlfredNutileInc\BaseModel;
 use Carbon\Carbon;
 
 class Notification extends BaseModel implements NotificationModelInterface {
@@ -30,7 +30,7 @@ class Notification extends BaseModel implements NotificationModelInterface {
 
     public function notification_message()
     {
-        return $this->belongsTo('AlfredNutileInc\CoreApp\Notifications\NotificationMessage');
+        return $this->belongsTo('AlfredNutileInc\Notifications\NotificationMessage');
     }
 
     public function from()

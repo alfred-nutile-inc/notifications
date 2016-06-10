@@ -6,13 +6,13 @@
  * Time: 1:52 PM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
 
-use AlfredNutileInc\CoreApp\BaseController;
+use AlfredNutileInc\BaseController;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
-use AlfredNutileInc\CoreApp\Notifications\NotificationInterface;
+use AlfredNutileInc\Notifications\NotificationInterface;
 use Illuminate\Support\Facades\Validator;
 
 class NotificationsController extends BaseController {

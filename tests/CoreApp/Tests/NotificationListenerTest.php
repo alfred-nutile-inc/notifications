@@ -3,8 +3,8 @@
 
 namespace AlfredNutileInc\DiffTool\Tests;
 
-use AlfredNutileInc\CoreApp\Notifications\Notification;
-use AlfredNutileInc\CoreApp\Notifications\NotificationCategory;
+use AlfredNutileInc\Notifications\Notification;
+use AlfredNutileInc\Notifications\NotificationCategory;
 use AlfredNutileInc\DiffTool\Notifications\NotificationsListener;
 use Illuminate\Support\Facades\Event;
 use Mockery as m;

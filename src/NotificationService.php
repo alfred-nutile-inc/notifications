@@ -6,10 +6,10 @@
  * Time: 9:28 AM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
-use AlfredNutileInc\CoreApp\Helpers\ThrowAndLogErrors;
-use AlfredNutileInc\CoreApp\Helpers\UuidHelper;
+use AlfredNutileInc\Helpers\ThrowAndLogErrors;
+use AlfredNutileInc\Helpers\UuidHelper;
 use Illuminate\Support\Facades\Auth;
 
 class NotificationService implements NotificationInterface {

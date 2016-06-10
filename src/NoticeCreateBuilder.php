@@ -6,7 +6,7 @@
  * Time: 8:16 AM
  */
 
-namespace AlfredNutileInc\CoreApp\Notifications;
+namespace AlfredNutileInc\Notifications;
 
 
 class NoticeCreateBuilder {
