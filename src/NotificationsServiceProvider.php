@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alfrednutile
- * Date: 2/19/15
- * Time: 9:26 AM
- */
 
 namespace AlfredNutileInc\Notifications;
 
@@ -12,10 +6,13 @@ use Illuminate\Support\ServiceProvider;
 
 class NotificationsServiceProvider extends ServiceProvider
 {
-
+    /**
+     * Service provider boot sequence
+     */
     public function boot()
     {
         $this->publishMigrations();
+        $this->publishAssets();
         $this->registerRoutes();
     }
 
@@ -37,7 +34,7 @@ class NotificationsServiceProvider extends ServiceProvider
      */
     protected function publishMigrations() {
         $this->publishes([
-            __DIR__.'/../migrations' => database_path('migrations')
+            __DIR__ . '/../migrations' => database_path('migrations')
         ], 'migrations');
     }
 
@@ -47,7 +44,7 @@ class NotificationsServiceProvider extends ServiceProvider
     protected function publishAssets()
     {
         $this->publishes([
-            __DIR__.'/../assets' => public_path('vendor/notifications'),
+            __DIR__ . '/../assets' => public_path('vendor/notifications'),
         ], 'public');
     }
 

@@ -8,14 +8,12 @@
 
 namespace AlfredNutileInc\Notifications;
 
-
-use AlfredNutileInc\BaseController;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
-use AlfredNutileInc\Notifications\NotificationInterface;
 use Illuminate\Support\Facades\Validator;
 
-class NotificationsController extends BaseController {
+class NotificationsController extends Controller {
     protected $input;
 
 
@@ -26,7 +24,6 @@ class NotificationsController extends BaseController {
 
     public function __construct(NotificationInterface $service)
     {
-        parent::__construct();
         $this->service = $service;
     }
 

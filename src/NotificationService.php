@@ -8,15 +8,9 @@
 
 namespace AlfredNutileInc\Notifications;
 
-use AlfredNutileInc\Helpers\ThrowAndLogErrors;
-use AlfredNutileInc\Helpers\UuidHelper;
 use Illuminate\Support\Facades\Auth;
 
 class NotificationService implements NotificationInterface {
-
-    use ThrowAndLogErrors;
-    use UuidHelper;
-
     public $rulesUpdate = [];
 
     protected $limit = 10;

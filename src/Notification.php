@@ -8,7 +8,7 @@
 
 namespace AlfredNutileInc\Notifications;
 
-use AlfredNutileInc\BaseModel;
+use Illuminate\Database\Eloquent\Model as BaseModel;
 use Carbon\Carbon;
 
 class Notification extends BaseModel implements NotificationModelInterface {
