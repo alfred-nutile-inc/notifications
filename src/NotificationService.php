@@ -94,17 +94,37 @@ class NotificationService implements NotificationInterface
 
     public function getAll()
     {
-        return $this->notification_model->with('notification_message', 'from')->toId($this->getToId())->read($this->getRead())->take($this->getLimit())->orderBy('created_at', $this->getOrder())->get();
+        $all = $this->notification_model
+            ->with('notification_message', 'from')
+            ->toId($this->getToId())
+            ->read($this->getRead())
+            ->take($this->getLimit())
+            ->orderBy('created_at', $this->getOrder())
+            ->get();
+
+        return $all;
     }
 
     public function from($from_id)
     {
-        return $this->notification_model->with('notification_message')->fromId($from_id)->read($this->getRead())->take($this->getLimit())->orderBy('created_at', $this->getOrder())->get();
+        return $this->notification_model
+            ->with('notification_message')
+            ->fromId($from_id)
+            ->read($this->getRead())
+            ->take($this->getLimit())
+            ->orderBy('created_at', $this->getOrder())
+            ->get();
     }
 
     public function to($to_id)
     {
-        return $this->notification_model->with('notification_message')->toId($to_id)->fromId($this->getFromId())->read($this->getRead())->take($this->getLimit())->orderBy('created_at', $this->getOrder())->get();
+        return $this->notification_model
+            ->with('notification_message')
+            ->toId($to_id)
+            ->fromId($this->getFromId())
+            ->read($this->getRead())
+            ->take($this->getLimit())
+            ->orderBy('created_at', $this->getOrder())->get();
     }
 
     /**

@@ -27,9 +27,9 @@ class NotificationsController extends Controller
         try {
             $results['notifications'] = $this->service->initialize($input)->getAll($input);
 
-            return Response::json($this->responseServices->respond($results, 'Loaded Notifications'), 200);
+            return Response::json(['results' => $results], 200);
         } catch (\Exception $e) {
-            return Response::json($this->responseServices->respond($e->getMessage(), sprintf('Error Getting Notifications  %s', $e->getMessage())), 422);
+            return Response::json(['message' => $e->getMessage(), 'results' => []], 422);
         }
     }
 
