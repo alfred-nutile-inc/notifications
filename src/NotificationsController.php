@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alfrednutile
- * Date: 2/19/15
- * Time: 1:52 PM
- */
 
 namespace AlfredNutileInc\Notifications;
 
@@ -13,9 +7,9 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
-class NotificationsController extends Controller {
+class NotificationsController extends Controller
+{
     protected $input;
-
 
     /**
      * @var NotificationService
@@ -30,79 +24,70 @@ class NotificationsController extends Controller {
     public function index()
     {
         $input = Input::only(['read', 'limit']);
-        try
-        {
+        try {
             $results['notifications'] = $this->service->initialize($input)->getAll($input);
-            return Response::json($this->responseServices->respond($results, "Loaded Notifications"), 200);
-        }
-        catch(\Exception $e) {
-            return Response::json($this->responseServices->respond($e->getMessage(), sprintf("Error Getting Notifications  %s", $e->getMessage())), 422);
+
+            return Response::json($this->responseServices->respond($results, 'Loaded Notifications'), 200);
+        } catch (\Exception $e) {
+            return Response::json($this->responseServices->respond($e->getMessage(), sprintf('Error Getting Notifications  %s', $e->getMessage())), 422);
         }
     }
 
     public function getNotification($notice_id)
     {
-        try
-        {
+        try {
             $results['notification'] = $this->service->getOne($notice_id);
-            return Response::json($this->responseServices->respond($results, "Loaded Notice"), 200);
-        }
-        catch(\Exception $e) {
-            return Response::json($this->responseServices->respond($e->getMessage(), sprintf("Error Getting Notification %s", $e->getMessage())), 422);
+
+            return Response::json($this->responseServices->respond($results, 'Loaded Notice'), 200);
+        } catch (\Exception $e) {
+            return Response::json($this->responseServices->respond($e->getMessage(), sprintf('Error Getting Notification %s', $e->getMessage())), 422);
         }
     }
 
     public function putNotificationRead($notice_ids)
     {
-        try
-        {
-            $this->input  = explode(",", $notice_ids);
-        } catch(\Exception $e)
-        {
-            return Response::json($this->responseServices->respond($e->getMessage(), "POST Failed"), 422);
+        try {
+            $this->input = explode(',', $notice_ids);
+        } catch (\Exception $e) {
+            return Response::json($this->responseServices->respond($e->getMessage(), 'POST Failed'), 422);
         }
 
         $validator = Validator::make($this->input, $this->service->rulesUpdate);
 
-        if(!$validator->passes()) {
-            return Response::json($this->responseServices->respond($validator->messages(), "Validation failed"), 422);
+        if (!$validator->passes()) {
+            return Response::json($this->responseServices->respond($validator->messages(), 'Validation failed'), 422);
         }
 
-        try
-        {
+        try {
             $results = $this->service->updateNoticesRead($this->input);
             $count = count($this->input);
+
             return Response::json($this->responseServices->respond([], "Marked $count notices read"), 200);
-        }
-        catch(\Exception $e) {
-            return Response::json($this->responseServices->respond($e->getMessage(), sprintf("Error Updating Notices %s", $e->getMessage())), 422);
+        } catch (\Exception $e) {
+            return Response::json($this->responseServices->respond($e->getMessage(), sprintf('Error Updating Notices %s', $e->getMessage())), 422);
         }
     }
 
     public function putNotification($notice_id)
     {
-        try
-        {
-            $this->input  = $this->getInput();
-        } catch(\Exception $e)
-        {
-            return Response::json($this->responseServices->respond($e->getMessage(), "POST Failed"), 422);
+        try {
+            $this->input = $this->getInput();
+        } catch (\Exception $e) {
+            return Response::json($this->responseServices->respond($e->getMessage(), 'POST Failed'), 422);
         }
 
         $validator = Validator::make($this->input, $this->service->rulesUpdate);
 
-        if(!$validator->passes()) {
-            return Response::json($this->responseServices->respond($validator->messages(), "Validation failed"), 422);
+        if (!$validator->passes()) {
+            return Response::json($this->responseServices->respond($validator->messages(), 'Validation failed'), 422);
         }
 
-        try
-        {
+        try {
             $results = $this->service->updateNotice($notice_id, $this->input);
-            return Response::json($this->responseServices->respond($results, "Updated Notice"), 200);
-        }
-        catch(\Exception $e) {
-            return Response::json($this->responseServices->respond($e->getMessage(), sprintf("Error Updating Notice %s", $e->getMessage())), 422);
+
+            return Response::json($this->responseServices->respond($results, 'Updated Notice'), 200);
+        } catch (\Exception $e) {
+            return Response::json($this->responseServices->respond($e->getMessage(), sprintf('Error Updating Notice %s', $e->getMessage())), 422);
         }
     }
-
 }

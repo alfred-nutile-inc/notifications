@@ -1,17 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alfrednutile
- * Date: 2/20/15
- * Time: 8:16 AM
- */
 
 namespace AlfredNutileInc\Notifications;
 
-
-class NoticeCreateBuilder {
-
-
+class NoticeCreateBuilder
+{
     public $to_id;
     public $to_type;
     public $from_id;
@@ -141,5 +133,4 @@ class NoticeCreateBuilder {
     {
         $this->id = $id;
     }
-
 }

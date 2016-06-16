@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class NotificationsServiceProvider extends ServiceProvider
 {
     /**
-     * Service provider boot sequence
+     * Service provider boot sequence.
      */
     public function boot()
     {
@@ -18,42 +18,42 @@ class NotificationsServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
-        $this->app->bind('AlfredNutileInc\Notifications\NotificationInterface', function($app) {
+        $this->app->bind('AlfredNutileInc\Notifications\NotificationInterface', function ($app) {
            $model = new Notification();
+
            return new NotificationService($model);
         });
     }
 
     /**
-     * Registers a publisher for the migrations
+     * Registers a publisher for the migrations.
      */
-    protected function publishMigrations() {
+    protected function publishMigrations()
+    {
         $this->publishes([
-            __DIR__ . '/../migrations' => database_path('migrations')
+            __DIR__.'/../migrations' => database_path('migrations'),
         ], 'migrations');
     }
 
     /**
-     * Registers a publisher for assets
+     * Registers a publisher for assets.
      */
     protected function publishAssets()
     {
         $this->publishes([
-            __DIR__ . '/../assets' => public_path('vendor/notifications'),
+            __DIR__.'/../assets' => public_path('vendor/notifications'),
         ], 'public');
     }
 
     /**
-     * Registers routes
+     * Registers routes.
      */
     protected function registerRoutes()
     {
-        if (! $this->app->routesAreCached()) {
+        if (!$this->app->routesAreCached()) {
             require __DIR__.'/routes.php';
         }
     }
