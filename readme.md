@@ -4,42 +4,30 @@ video [here](https://www.youtube.com/watch?v=eb6BvQt0Qsc)
 
 ## Install
 
-**@TODO make this a proper l5 package**
-
-Until I do you need to
-
-## Include the route file
+### Composer
 
 ~~~
 composer require alfred-nutile-inc/notifications:dev-master
 ~~~
 
+### Add the provider
 
-~~~
-//Notifications
-$path = base_path('vendor/alfred-nutile-inc/notifications/src/Notifications/routes.php');
-if(File::exists($path))
-	require_once($path);
-~~~
+```
+AlfredNutileInc\Notifications\NotificationsServiceProvider::class,
+```
 
-## Copy over migration files 
+## Publish Migrations
 
-~~~
-2014_05_05_212549_create_notifications_table.php
-2014_05_05_212609_create_notifications_categories_table.php
-~~~
+```
+php artisan vendor:publish --provider="AlfredNutileInc\Notifications\NotificationsServiceProvider" --tag='migrations'
+```
 
-To your database/migrations folder
+## Publish Assets
 
-### Register the provider and facade
+```
+php artisan vendor:publish --provider="AlfredNutileInc\Notifications\NotificationsServiceProvider" --tag='public'
+```
 
-~~~
-//Providers
-'AlfredNutileInc\CoreApp\Notifications\NotificationsServiceProvider',
-
-//facade
-'Notify' 	       => 'AlfredNutileInc\CoreApp\Notifications\NotificationFacade'
-~~~
 
 Then use as needed and seen in video
 
