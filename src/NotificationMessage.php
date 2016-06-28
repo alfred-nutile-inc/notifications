@@ -1,10 +1,9 @@
 <?php
 
 namespace AlfredNutileInc\Notifications;
+use Illuminate\Database\Eloquent\Model;
 
-use AlfredNutileInc\BaseModel;
-
-class NotificationMessage extends BaseModel
+class NotificationMessage extends Model
 {
     public $incrementing = false;
 

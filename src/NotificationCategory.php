@@ -2,9 +2,9 @@
 
 namespace AlfredNutileInc\Notifications;
 
-use AlfredNutileInc\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 
-class NotificationCategory extends BaseModel
+class NotificationCategory extends Model
 {
     public $incrementing = false;
 
