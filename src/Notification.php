@@ -31,6 +31,11 @@ class Notification extends BaseModel implements NotificationModelInterface
     {
         return $this->belongsTo('AlfredNutileInc\Notifications\NotificationMessage');
     }
+    
+    public function notification_category()
+    {
+      return $this->belongsTo('AlfredNutileInc\Notifications\NotificationCategory');
+    }
 
     public function from()
     {
