@@ -14,8 +14,6 @@ use AlfredNutileInc\Notifications\NotificationFacade as Notify;
 
 class NotificationHelper
 {
-    use UuidHelper;
-
     /**
      * @var array
      */
