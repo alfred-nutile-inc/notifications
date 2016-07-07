@@ -4,6 +4,7 @@ namespace AlfredNutileInc\Notifications\Events;
 
 use AlfredNutileInc\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
+use App\Events\Event as Event;
 
 class NotificationSent extends Event
 {
