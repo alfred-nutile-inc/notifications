@@ -1,6 +1,6 @@
 <?php
 
-namespace AlfredNutileInc\Notifications\Helpers;
+namespace AlfredNutileInc\Notifications;
 
 use AlfredNutileInc\Notifications\NoticeCreateBuilder;
 use AlfredNutileInc\Notifications\Notification;

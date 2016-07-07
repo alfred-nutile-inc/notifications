@@ -49,6 +49,20 @@ The test files shows some example usage
 [/tests/CoreApp/Tests/NotificationListenerTest.php](/tests/CoreApp/Tests/NotificationListenerTest.php)
 
 
+# Sending Notifications with NotificationHelper
+
+In this example, a "Tactic" sends a notification to itself in order to later be displayed on a Tactic "activity" page.
+
+->setRecipients can be called multiple times with different sender types, so you could send the notification to multiple different models all at once.
+
+```php
+$helper->setFrom(Tactic::class, $tactic->id)
+      ->setRecipients(Tactic::class, [$tactic->id])
+      ->setMessage($this->faker->paragraph(3))
+      ->setCategoryByName('test_tactic_notification', 'Tactic Notification')
+      ->sendNotifications();
+```
+
 # Plug it into Angular
 
 
