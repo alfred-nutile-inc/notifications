@@ -10,7 +10,25 @@ class NotificationMessage extends Model
     protected $fillable = [
         'id',
         'message',
+        'translatable',
+        'trans_function',
+        'trans_params',
     ];
 
     protected $hidden = ['id', 'created_at', 'updated_at'];
+
+    protected $casts = [
+        'trans_params' => 'array',
+    ];
+
+    public function getMessageAttribute($value)
+    {
+        if ($this->translatable) {
+            $func = $this->trans_function;
+
+            return $func($value, $this->trans_params);
+        }
+
+        return $value;
+    }
 }

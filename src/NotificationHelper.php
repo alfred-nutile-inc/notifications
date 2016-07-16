@@ -115,7 +115,7 @@ class NotificationHelper
     }
 
     /**
-     * Sets the intended message (Possibly passes it through translation?)
+     * Sets the intended message.
      *
      * @param string $message
      *
@@ -124,6 +124,35 @@ class NotificationHelper
     public function setMessage($message)
     {
         $this->createMessage($message);
+
+        return $this;
+    }
+
+    /**
+     * Sets the intended translatable message.
+     * This message will be translated at run time using the application's translation keys.
+     *
+     * @example
+     * $this->setTranslatableMessage('messages.you_have_notifications', ['from' => 'Foo Bar'])
+     *
+     * @param $message_key
+     * @param array $params
+     */
+    public function setTranslatableMessage($message_key, $params = [])
+    {
+        $this->createTranslatableMessage($message_key, $params);
+
+        return $this;
+    }
+
+    public function setTransFunction($function)
+    {
+        if (empty($this->messageObj)) {
+            throw new \Exception('You need to set message before calling setTransFunction');
+        }
+
+        $this->messageObj->trans_function = $function;
+        $this->messageObj->save();
 
         return $this;
     }
@@ -203,8 +232,6 @@ class NotificationHelper
     /**
      * Creates the message
      *
-     * @todo: Make sure it's properly translated based on recipient?
-     *
      * @param $message
      *
      * @return NotificationMessage
@@ -220,7 +247,21 @@ class NotificationHelper
 
         return $this;
     }
-    
+
+    protected function createTranslatableMessage($message_key, $params = [])
+    {
+        $this->messageObj = NotificationMessage::create(
+            [
+                'id' => $this->getNewUuid(),
+                'message' => $message_key,
+                'translatable' => true,
+                'trans_params' => $params,
+            ]
+        );
+
+        return $this;
+    }
+
     /**
      * Generates and returns a new UUID as a string
      */
