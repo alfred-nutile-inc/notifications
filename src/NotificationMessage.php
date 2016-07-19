@@ -26,7 +26,9 @@ class NotificationMessage extends Model
         if ($this->translatable) {
             $func = $this->trans_function;
 
-            return $func($value, $this->trans_params);
+            if (is_callable($func)) {
+                return $func($value, $this->trans_params);
+            }
         }
 
         return $value;
