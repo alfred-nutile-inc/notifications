@@ -47,9 +47,9 @@ class NotificationHelper
     public static function getNotificationsTo($type, $id, $params = [])
     {
         $defaults = [
-            'unread'   => true,
+            'unread' => true,
             'category' => null,
-            'per_page'  => 10,
+            'per_page' => 10,
         ];
 
         $params = array_merge($defaults, $params);
@@ -67,8 +67,8 @@ class NotificationHelper
             $notificationQuery->where('notification_category_id', $categoryObj->id);
         }
 
-        if ($params['unread']) {
-            $notificationQuery->where('read', 0);
+        if (isset($params['unread'])) {
+          $notificationQuery->where('read', !$params['unread']);
         }
 
         $notificationQuery->with(['notification_message', 'notification_category'])
