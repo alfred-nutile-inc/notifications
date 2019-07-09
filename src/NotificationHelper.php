@@ -224,7 +224,7 @@ class NotificationHelper
 
         $notification = Notify::create($notify_builder);
         
-        Event::fire(new NotificationSent($notification));
+        dispatch(new NotificationSent($notification));
 
         return $notification;
     }

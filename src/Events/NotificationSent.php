@@ -25,6 +25,11 @@ class NotificationSent extends Event
         $this->notification = $notification;
     }
 
+    public function handle()
+    {
+
+    }
+    
     /**
      * @return Notification
      */
