@@ -223,8 +223,8 @@ class NotificationHelper
         );
 
         $notification = Notify::create($notify_builder);
-        
-        dispatch(new NotificationSent($notification));
+
+        event(new NotificationSent($notification));
 
         return $notification;
     }
