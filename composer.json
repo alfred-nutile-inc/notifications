@@ -10,6 +10,7 @@
   ],
   "require": {
     "php": ">=5.4.0",
+    "ramsey/uuid": "^3.4",
     "vlucas/phpdotenv": "*"
   },
   "require-dev": {
@@ -22,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "AlfredNutileInc\\CoreApp\\": "src/"
+      "AlfredNutileInc\\Notifications\\": "src/"
     }
   },
   "minimum-stability": "dev"

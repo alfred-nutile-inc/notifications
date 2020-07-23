@@ -4,42 +4,30 @@ video [here](https://www.youtube.com/watch?v=eb6BvQt0Qsc)
 
 ## Install
 
-**@TODO make this a proper l5 package**
-
-Until I do you need to
-
-## Include the route file
+### Composer
 
 ~~~
 composer require alfred-nutile-inc/notifications:dev-master
 ~~~
 
+### Add the provider
 
-~~~
-//Notifications
-$path = base_path('vendor/alfred-nutile-inc/notifications/src/Notifications/routes.php');
-if(File::exists($path))
-	require_once($path);
-~~~
+```
+AlfredNutileInc\Notifications\NotificationsServiceProvider::class,
+```
 
-## Copy over migration files 
+## Publish Migrations
 
-~~~
-2014_05_05_212549_create_notifications_table.php
-2014_05_05_212609_create_notifications_categories_table.php
-~~~
+```
+php artisan vendor:publish --provider="AlfredNutileInc\Notifications\NotificationsServiceProvider" --tag='migrations'
+```
 
-To your database/migrations folder
+## Publish Assets
 
-### Register the provider and facade
+```
+php artisan vendor:publish --provider="AlfredNutileInc\Notifications\NotificationsServiceProvider" --tag='public'
+```
 
-~~~
-//Providers
-'AlfredNutileInc\CoreApp\Notifications\NotificationsServiceProvider',
-
-//facade
-'Notify' 	       => 'AlfredNutileInc\CoreApp\Notifications\NotificationFacade'
-~~~
 
 Then use as needed and seen in video
 
@@ -60,6 +48,20 @@ The test files shows some example usage
 [/tests/CoreApp/Tests/NotificationTest.php](/tests/CoreApp/Tests/NotificationTest.php)
 [/tests/CoreApp/Tests/NotificationListenerTest.php](/tests/CoreApp/Tests/NotificationListenerTest.php)
 
+
+# Sending Notifications with NotificationHelper
+
+In this example, a "Tactic" sends a notification to itself in order to later be displayed on a Tactic "activity" page.
+
+->setRecipients can be called multiple times with different sender types, so you could send the notification to multiple different models all at once.
+
+```php
+$helper->setFrom(Tactic::class, $tactic->id)
+      ->setRecipients(Tactic::class, [$tactic->id])
+      ->setMessage($this->faker->paragraph(3))
+      ->setCategoryByName('test_tactic_notification', 'Tactic Notification')
+      ->sendNotifications();
+```
 
 # Plug it into Angular
 

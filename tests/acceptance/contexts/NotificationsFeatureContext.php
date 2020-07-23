@@ -1,6 +1,6 @@
 <?php
 
-use AlfredNutileInc\CoreApp\Notifications\Notification;
+use AlfredNutileInc\Notifications\Notification;
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\BehatContext,

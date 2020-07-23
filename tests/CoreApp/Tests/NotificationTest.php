@@ -6,9 +6,9 @@
  * Time: 8:23 PM
  */
 
-namespace AlfredNutileInc\CoreApp\Tests;
+namespace AlfredNutileInc\Tests;
 
-use AlfredNutileInc\CoreApp\Notifications\NotificationFacade as Notify;
+use AlfredNutileInc\Notifications\NotificationFacade as Notify;
 use Approve\Profile\User;
 use Mockery as m;
 
