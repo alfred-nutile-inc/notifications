@@ -8,6 +8,13 @@ class NotificationCategory extends Model
 {
     public $incrementing = false;
 
+    /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
     protected $fillable = [
         'id',
         'name',

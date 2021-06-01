@@ -14,6 +14,13 @@ class Notification extends BaseModel implements NotificationModelInterface
 {
     public $incrementing = false;
 
+    /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
     protected $fillable = [
         'id',
         'from_id',
